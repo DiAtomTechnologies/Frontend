@@ -34,7 +34,7 @@ const Navbar = () => {
   const pathname = usePathname();
   return (
     <nav className={openSans.className}>
-      <div className={cn("2xl:px-80 lg:px-32  md:px-24 px-6 z-30 pt-8 w-full bg-gray-100 flex justify-between lg:border-b-2 border-zinc-200 relative", isOpen ? "pb-6" : "pb-8")} >
+      <div className={cn("2xl:px-80 lg:px-28  md:px-24 px-6 z-30  md:pt-8  pt-4 w-full bg-gray-100 flex justify-between  relative", isOpen ? "pb-4" : "md:pb-8 pb-4")} >
         <div className="flex items-center gap-4 z-30 cursor-pointer" onClick={() => router.push("/")}>
           <img src="/logo.png" alt="logo" className="lg:w-14 w-12 h-auto" />
         </div>

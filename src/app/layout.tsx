@@ -18,9 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="smooth-scroll">
       <body className={inter.className}>
-      <div className="fixed w-full">
         <Navbar/>
-      </div>
         {children}
       </body>
     </html>

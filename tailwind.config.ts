@@ -19,6 +19,7 @@ const config = {
     },
     extend: {
       colors: {
+        ovelay_black: "rgba(0,0,0,0.2)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
