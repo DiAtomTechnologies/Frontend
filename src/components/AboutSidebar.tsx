@@ -1,3 +1,5 @@
+import { boxVariants } from "@/lib/animation";
+import { AboutData } from "@/lib/navbar";
 import { cn } from "@/lib/utils";
 import {motion , AnimatePresence} from "framer-motion"
 import Link from "next/link";
@@ -6,47 +8,19 @@ import { FC } from "react"
 
 
 interface AboutSidebar {
-  viewAbout : boolean;
+  showAbout : boolean;
 }
-interface AboutDataType {
-  heading: string;
-  links: {
-    name: string;
-    href: string;
-  }[]
-}
-const AboutData: AboutDataType[] = [
-  {
-    heading: "Who are we",
-    links: [
-      { name: "About Us", href: "/about" },
-      { name: "Leadership", href: '/about/leadership' },
-      { name: "Our Business", href: '/about/business' },
-    ],
-  },
-  {
-    heading: "What we stand for",
-    links: [
-      { name: "Sustainability", href: "/about/sustainability" }
-    ]
-  }
-]
 
-const boxVariants = {
-  hidden: { y: -400 },
-  visible: { y: 0 },
-  exit: { y: -400 }
-};
 
-const AboutSidebar : FC<AboutSidebar> = ({viewAbout}) =>{
+const AboutSidebar : FC<AboutSidebar> = ({showAbout}) =>{
   const pathname = usePathname();
   return (
     <AnimatePresence>
-        {viewAbout && (
+        {showAbout && (
           <motion.div variants={boxVariants}
             initial="hidden"
             animate="visible"
-            exit="exit"
+            exit="hidden"
             transition={{ duration: 0.5, ease: 'easeInOut' }} className="2xl:px-80 lg:px-32  md:px-24 px-6 z-20 w-full absolute py-16 bg-gray-100 flex max-lg:hidden">
             {AboutData.map(data => {
               return (

@@ -4,59 +4,18 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Open_Sans } from "next/font/google";
 import { usePathname } from "next/navigation";
+import { AboutData, mobileNavLinks } from "@/lib/navbar";
+import { boxVariants, opacityVarient } from "@/lib/animation";
 
 interface MobileSidebar {
   isOpen: boolean;
+  showAbout : boolean;
+  setShowAbout : React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-interface AboutDataType {
-  heading: string;
-  links: {
-    name: string;
-    href: string;
-  }[]
-}
 const openSans = Open_Sans({
   subsets: ["latin"]
 })
-
-const boxVariants = {
-  hidden: { y: -400 },
-  visible: { y: 0 },
-};
-
-const opacityVarient = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 }
-}
-
-interface Link {
-  name: string,
-  href: string,
-}
-const navLinks: Link[] = [
-  { name: 'Products', href: '/products' },
-  { name: 'Careers', href: '/careers' },
-  { name: 'Contact', href: '/contact' },
-]
-
-const AboutData: AboutDataType[] = [
-  {
-    heading: "Who are we",
-    links: [
-      { name: "About Us", href: "/about" },
-      { name: "Leadership", href: '/about/leadership' },
-      { name: "Our Business", href: '/about/business' }
-    ],
-  },
-  {
-    heading: "What we stand for",
-    links: [
-      { name: "Sustainability", href: "/about/sustainability" }
-    ]
-  }
-]
-
 
 const MobileSidebar: FC<MobileSidebar> = ({ isOpen }) => {
   const pathname = usePathname();
@@ -71,7 +30,7 @@ const MobileSidebar: FC<MobileSidebar> = ({ isOpen }) => {
         transition={{ duration: 0.3, ease: 'easeInOut' }}
         className={cn("absolute bg-gray-100 w-full lg:hidden flex flex-col gap-7 pb-8 pt-4 md:px-24 px-6 z-20 ", openSans.className)}>
         <div onClick={() => setShowAbout(!showAbout)} className={cn("relative z-30 flex group text-xl font-medium hover:text-teal-500 text-black duration-150 delay-150 transition-all ", pathname === "/about" ? " fill-teal-500 text-teal-600" : "", showAbout ? "-translate-y-4 -translate-x-2 border-2  border-gray-100 border-b-black " : "")} >
-          <h3 >About Us</h3>
+          <h3>About DiAtom</h3>
           <svg xmlns="http://www.w3.org/2000/svg" className={cn("relative top-[1px] w-6 h-auto group-hover:fill-teal-500 duration-150 delay-150 transition-all", showAbout ? "-rotate-90" : "" )} viewBox="0 -960 960 960" ><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" /></svg>
         </div>
         <AnimatePresence>
@@ -101,8 +60,6 @@ const MobileSidebar: FC<MobileSidebar> = ({ isOpen }) => {
         <hr className="text-black fill-black " />
       </motion.div>
       }
-
-
     </AnimatePresence>
   )
 }
@@ -112,7 +69,7 @@ const Links = () => {
   const pathname = usePathname();
   return (
     <>
-      {navLinks.map((data: Link) => {
+      {mobileNavLinks.map((data) => {
         return (
           <Link key={data.name} href={data.href} className={cn("text-xl text-black font-medium hover:text-teal-600 duration-150 delay-150 transition-all ", pathname === data.href ? "text-teal-600" : "")} >{data.name}</Link>
         )
