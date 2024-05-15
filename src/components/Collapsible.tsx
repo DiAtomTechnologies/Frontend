@@ -22,8 +22,8 @@ interface Collapsible {
 const collapsibleData : CollapsibleData[] = [
   { 
     value : "item-1",
-    trigger : "Bio technology",
-    content : "Advancements in healthcare and medicine are moving at an unprecedented pace with a promising pipeline of innovative drugs on the horizon that are more targeted, personalized, and effective than ever before. Our Biotechnology business brings expertise, technologies, and services that accelerate the development and commercialization of these life-changing therapies, ensuring that they can be delivered quickly and safely to the patients who need them.",
+    trigger : "Instruments",
+    content : "Our innovative instruments revolutionize healthcare, providing life-sustaining ventilators and groundbreaking biological 3D printers. Breathing new life into respiratory care, our ventilators deliver precision and efficiency. Pioneering regenerative medicine, our 3D printers recreate human organs, restoring hope and redefining possibilities for countless lives.",
     image_value : {
       image1 : true,
       image2 : false,
@@ -61,7 +61,7 @@ const Collapsible : FC<Collapsible> = ({setShowImage}) => {
     <Accordion type="single" collapsible className="w-full">
       {collapsibleData.map(data => {
         return (
-          <AccordionItem value={data.value} key={data.value} className="py-4 gap-4 group" onClick={() => setShowImage(data.image_value)}>
+          <AccordionItem value={data.value} key={data.value} className="group" onClick={() => setShowImage(data.image_value)}>
             <AccordionTrigger className="text-2xl group-hover:text-teal-600 duration-150 delay-150 transition-colors">{data.trigger}</AccordionTrigger>
             <AccordionContent className="text-lg">{data.content}</AccordionContent>
           </AccordionItem>
