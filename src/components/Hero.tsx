@@ -1,3 +1,4 @@
+"use client"
 import { cn } from "@/lib/utils";
 import Lottie from "lottie-react";
 import { Open_Sans } from "next/font/google";
