@@ -52,7 +52,7 @@ const Navbar = () => {
             <motion.svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 -960 960 960"
-              className="w-10 h-10 "
+              className="w-8 h-8 "
               variants={fadeInVariants}
               initial="hidden"
               animate="visible"

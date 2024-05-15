@@ -59,7 +59,7 @@ const features: Feature[] = [
 
 const Features = () => {
   return (
-    <div className={cn("2xl:px-80 lg:px-28  md:px-24 px-6", openSans.className)}>
+    <div className={cn("2xl:px-80 lg:px-28  md:px-24 px-6 py-12", openSans.className)}>
       <h2 className="text-3xl pt-10 pb-24 font-medium">Revolutionizing Healthcare, Embracing Life</h2>
       <div className="w-full grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1  gap-8">
         {features.map((feature: Feature) => {

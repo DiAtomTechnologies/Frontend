@@ -8,7 +8,6 @@ export default function Home() {
       <Hero />
       <Accordian/>
       <Features/> 
-      <div className="h-screen w-full"></div>
     </>
   );
 }
