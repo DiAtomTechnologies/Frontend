@@ -22,9 +22,7 @@ export interface CollapsibleData {
   image_value : Image;
 }
 
-const openSans = Open_Sans({
-  subsets: ["latin"]
-})
+
 
 const collapsibleData : CollapsibleData[] = [
   { 
@@ -70,7 +68,7 @@ export default function Accordian() {
     image3: false
   })
   return (
-    <div className={cn("padding-x pt-24 w-full ", openSans.className)}>
+    <div className={cn("padding-x pt-24 w-full open-sans")}>
       <h1 className="lg:text-3xl text-2xl  lg:leading-10">We are DiAtom Technologies, breathing life into healthcare through pioneering ventilators and revolutionary 3D printing that redefines regenerative medicine&apos;s possibilities.</h1>
       <div className="w-full pt-24 pb-12 flex gap-8">
         <div className="w-1/2 flex items-start justify-start z-10 max-lg:hidden ">

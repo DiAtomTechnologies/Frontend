@@ -36,7 +36,7 @@ export const AboutData: AboutDataType[] = [
 
 export const navLinks = [
   { name: 'About DiAtom', href: '/about' },
-  { name: 'Products', href: '/products' },
+  { name: 'Products', href: '/#products' },
   { name: 'Careers', href: '/careers' },
   { name: 'Contact', href: '/contact' },
 ]

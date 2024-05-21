@@ -83,7 +83,7 @@
 }
 
 .padding-x {
-  @apply 2xl:px-80 lg:px-28  md:px-24 px-6;
+  @apply 2xl:px-64   md:px-24 px-6;
 }
 
 .lato {
@@ -113,4 +113,9 @@
 .monts {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
+}
+
+.text-stroke {
+  -webkit-text-fill-color : transparent;
+  -webkit-text-stroke-width : 2px;
 }

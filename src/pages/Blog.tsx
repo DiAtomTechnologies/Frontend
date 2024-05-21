@@ -1,16 +1,11 @@
 "use client";
 import { BlogData } from "@/lib/blog";
 import { cn } from "@/lib/utils";
-import { Open_Sans } from "next/font/google";
 import Link from "next/link";
-
-const openSans = Open_Sans({
-  subsets: ["latin"],
-});
 
 const Blog = () => {
   return (
-    <div className={cn("padding-x w-full py-12", openSans.className)}>
+    <div className={cn("padding-x w-full py-12 open-sans")}>
       <div className="flex justify-between items-center mb-16">
         <h3 className="text-4xl font-medium">Learn more about us</h3>
         <Link

@@ -64,7 +64,7 @@ export const jobs: Jobs[] = [
   },
   {
     id: 3,
-    title: "Hr Manager",
+    title: "HR Manager",
     location: "chennai",
     type: "Full Time",
     href: "/careers",
@@ -74,7 +74,7 @@ export const jobs: Jobs[] = [
 export const internships: Jobs[] = [
   {
     id: 1,
-    title: "Web Development Intern",
+    title: "Web Development",
     type: "Remote",
     href: "/careers",
     duration: 8,
@@ -82,12 +82,29 @@ export const internships: Jobs[] = [
   },
   {
     id: 2,
-    title: "Testing Engineer",
+    title: "CAD Designer",
     type: "Remote",
     href: "/careers",
-    duration: 4,
+    duration: 8,
     durationType: "weeks",
   },
+  {
+    id :3,
+    title : "IOT Engineer",
+    type : "Full Time",
+    location : "chennai",
+    href: "/careers",
+    duration : 4,
+    durationType : "weeks"
+  },
+  {
+    id :4,
+    title : "Social Media Manager",
+    type : "Remote",
+    href : "/carrers",
+    duration : 12,
+    durationType : "weeks"
+  }
 ];
 
 export const training: Jobs[] = [

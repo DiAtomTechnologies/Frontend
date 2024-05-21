@@ -3,7 +3,7 @@
 const Footer = () => {
   return (
     <footer className="bg-gray-200 rounded-lg shadow  m-4 mt-12">
-      <div className="w-full py-4 md:py-8 2xl:px-80 lg:px-28  md:px-20 px-6">
+      <div className="w-full py-4 padding-x">
         <div className="md:flex md:items-center md:justify-between md:pb-12 pb-8">
           <a href="/" className="flex items-start mb-4  space-x-3 rtl:space-x-reverse">
             <img src="/logo.png" className="h-10" alt="logo" />

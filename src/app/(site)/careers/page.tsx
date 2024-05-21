@@ -3,7 +3,7 @@ import Lottie from "lottie-react";
 import career from "@/assets/career.json";
 
 import Link from "next/link";
-import Career from "@/components/Carrer";
+import Career from "@/components/Career";
 import { careerData, internships, jobs, training } from "@/lib/career";
 
 
@@ -64,7 +64,7 @@ export default function Home() {
       </div>
       <Career title="See our open positions" jobs={jobs} className="bg-violet-100 hover:bg-violet-200" />
       <Career title="See our Internships" jobs={internships} className="bg-teal-100 hover:bg-teal-200"/>
-      <Career title="See our Hands On Traning" jobs={training} className="bg-rose-100 hover:bg-rose-200"/>
+      <Career title="Learning Events and Webinars" jobs={training} className="bg-rose-100 hover:bg-rose-200"/>
     </div>
   );
 }

@@ -48,7 +48,7 @@ export const BlogData : blog[] = [
     id: 3,
     author: "john doe",
     authorImg: "/author.jpeg",
-    blogImg: "/bg/blogbg2.jpg",
+    blogImg: "/bg/blogbg3.jpg",
     href: "/blog/sample",
     date: "Jan 10,2024",
     title: "Bridging the Gap: Collaborative Efforts in Healthcare Innovation",
