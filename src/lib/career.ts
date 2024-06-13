@@ -37,91 +37,15 @@ export const careerData: career[] = [
   },
 ];
 
-export interface Jobs {
+export interface Career {
   id: number;
   title: string;
-  location?: string;
-  type?: "Full Time" | "Remote";
-  href: string;
+  worktype : "job" | "internship" | "event" ;
+  location: string;
+  applicationTime : number;
+  endDate : Date;
+  description ?: string;
   duration?: number;
   durationType?: "month" | "months" | "day" | "days" | "weeks" | "week";
 }
 
-export const jobs: Jobs[] = [
-  {
-    id: 1,
-    title: "Full Stack Developer",
-    location: "chennai",
-    type: "Full Time",
-    href: "/careers",
-  },
-  {
-    id: 2,
-    title: "Testing Engineer",
-    location: "chennai",
-    type: "Full Time",
-    href: "/careers",
-  },
-  {
-    id: 3,
-    title: "HR Manager",
-    location: "chennai",
-    type: "Full Time",
-    href: "/careers",
-  },
-];
-
-export const internships: Jobs[] = [
-  {
-    id: 1,
-    title: "Web Development",
-    type: "Remote",
-    href: "/careers",
-    duration: 8,
-    durationType: "weeks",
-  },
-  {
-    id: 2,
-    title: "CAD Designer",
-    type: "Remote",
-    href: "/careers",
-    duration: 8,
-    durationType: "weeks",
-  },
-  {
-    id :3,
-    title : "IOT Engineer",
-    type : "Full Time",
-    location : "chennai",
-    href: "/careers",
-    duration : 4,
-    durationType : "weeks"
-  },
-  {
-    id :4,
-    title : "Social Media Manager",
-    type : "Remote",
-    href : "/carrers",
-    duration : 12,
-    durationType : "weeks"
-  }
-];
-
-export const training: Jobs[] = [
-  {
-    id: 1,
-    title: "bioprinting mastery workshop",
-    duration: 3,
-    durationType: "days",
-    href: "/careers",
-    location: "chennai",
-  },
-  {
-    id: 2,
-    title: "Respiratory Care Simulation",
-    duration: 5,
-    durationType: "days",
-    href: "/careers",
-    location: "chennai",
-  },
-];

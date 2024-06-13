@@ -1,13 +1,54 @@
 "use client";
 import Lottie from "lottie-react";
 import career from "@/assets/career.json";
-
+import Loading from "@/assets/loading.json";
 import Link from "next/link";
 import Career from "@/components/Career";
-import { careerData, internships, jobs, training } from "@/lib/career";
-import { useEffect } from "react";
+import { careerData, Career as CareerType } from "@/lib/career";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [jobs, setJobs] = useState<CareerType[] | []>([]);
+  const [internships, setInternships] = useState<CareerType[] | []>([]);
+  const [events, setEvents] = useState<CareerType[] | []>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  const fetchData = async () => {
+    try {
+      const res = await fetch("http://localhost:8080/career/");
+      const data: { status: number; response: CareerType[] } = await res.json();
+
+      const jobsData = data.response.filter((item) => item.worktype === "job");
+      const internData = data.response.filter(
+        (item) => item.worktype === "internship",
+      );
+      const eventData = data.response.filter(
+        (item) => item.worktype === "event",
+      );
+      setJobs(jobsData);
+      setInternships(internData);
+      setEvents(eventData);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setIsLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="w-full h-[90vh] flex items-center justify-center">
+        <Lottie
+          animationData={Loading}
+          className="object-cover w-40"
+          loop={true}
+        />
+      </div>
+    );
+  }
   return (
     <div className="padding-x w-full ">
       <div className="flex justify-between max-lg:flex-col-reverse py-10">
@@ -60,9 +101,29 @@ export default function Home() {
           })}
         </div>
       </div>
-      <Career title="See our open positions" jobs={jobs} className="bg-violet-100 hover:bg-violet-200" />
-      <Career title="See our Internships" jobs={internships} className="bg-teal-100 hover:bg-teal-200"/>
-      <Career title="Learning Events and Webinars" jobs={training} className="bg-rose-100 hover:bg-rose-200"/>
+      { (jobs.length === 0 && internships.length === 0 && events.length === 0) && <p className="text-center text-gray-500 my-10">Currently no oppurtunities found</p>}
+
+      {jobs.length != 0 && (
+        <Career
+          title="See our open positions"
+          jobs={jobs}
+          className="bg-violet-100 hover:bg-violet-200"
+        />
+      )}
+      {internships.length != 0 && (
+        <Career
+          title="See our Internships"
+          jobs={internships}
+          className="bg-teal-100 hover:bg-teal-200"
+        />
+      )}
+      {events.length != 0 && (
+        <Career
+          title="Learning Events and Webinars"
+          jobs={events}
+          className="bg-rose-100 hover:bg-rose-200"
+        />
+      )}
     </div>
   );
 }
