@@ -43,7 +43,7 @@ export interface Career {
   worktype : "job" | "internship" | "event" ;
   location: string;
   applicationTime : number;
-  endDate : Date;
+  endDate : string;
   description ?: string;
   duration?: number;
   durationType?: "month" | "months" | "day" | "days" | "weeks" | "week";

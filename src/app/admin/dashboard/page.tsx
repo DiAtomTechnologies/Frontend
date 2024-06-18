@@ -43,18 +43,9 @@ const routes: route[] = [
 ];
 
 const Page: FC<pageProps> = ({}) => {
-  const router = useRouter();
-  useEffect(() => {
-    async function validate() {
-      const authenticated = await Validate();
-      if (!authenticated) {
-        router.push("/login")
-      }
-    }
-    validate();
-  }, []);
+ 
   return (
-    <div className={cn("w-full space-y-4 bg-white  monts pt-20")}>
+    <div className={cn("w-full space-y-4 bg-white  monts ")}>
       <h1 className="text-2xl font-bold md:text-5xl text-center">
         Dashboard page
       </h1>

@@ -1,5 +1,6 @@
 "use client";
 import Input from "@/components/Input";
+import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -8,6 +9,8 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  const {toast} =  useToast();
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -26,8 +29,16 @@ export default function Home() {
       if (!res.ok) {
         throw new Error("Failed to authenticate");
       }
-      router.push("/");
+      toast({
+        title : "Logged in successfully"
+      })
+      router.push("/admin/dashboard");
     } catch (err) {
+      toast({
+        variant: "destructive",
+        title : "Authentication error",
+        description : "Ensure your credentials are right"
+      })
       console.error(err);
     }
   };

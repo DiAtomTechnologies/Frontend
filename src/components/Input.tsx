@@ -4,8 +4,8 @@ import { FC } from "react";
 interface Input {
   placeholder: string;
   label: string;
-  value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
+  value: string | number;
+  setValue: React.Dispatch<React.SetStateAction<string>> | React.Dispatch<React.SetStateAction<number>>;
   className ?: string;
   type: string;
 }

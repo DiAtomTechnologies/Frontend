@@ -5,8 +5,7 @@ import { FC } from "react";
 
 import { IconType } from "react-icons";
 import { LuLayoutDashboard } from "react-icons/lu";
-import { AiOutlineGift } from "react-icons/ai";
-import { BsChatLeftText, BsCodeSlash, BsImage } from "react-icons/bs";
+import { BsImage } from "react-icons/bs";
 
 import { usePathname } from "next/navigation";
 import { IoMdMenu } from "react-icons/io";
@@ -28,7 +27,7 @@ const routes: route[] = [
   {
     label: "Dashboard",
     icon: LuLayoutDashboard,
-    href: "/dashboard",
+    href: "/admin/dashboard",
     color: "text-orange-400",
   },
   {
@@ -78,6 +77,7 @@ const Sidebar: FC<sidebarProps> = ({ setShowSidebar }) => {
                       ? "text-white bg-white/10"
                       : "text-gray-400",
                   )}
+                  onClick={() => setShowSidebar(false)}
                 >
                   {pathname === route.href && (
                     <div className="absolute left-0 w-[4px] rounded-r-3xl rounded-e-3xl  h-6 bg-white"></div>

@@ -1,5 +1,6 @@
 "use client";
 import Input from "@/components/Input";
+import { useToast } from "@/components/ui/use-toast";
 import { Validate } from "@/lib/auth";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -19,11 +20,48 @@ export default function Home() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [role, setRole] = useState<"ADMIN" | "MANAGER">("MANAGER");
+  const [isUploading, setIsUploading] = useState<boolean>(false);
+
+  const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(email, password, role);
+    try {
+      setIsUploading(true);
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/register`,
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            password,
+            name,
+            role,
+          }),
+        },
+      );
+
+      if (!res.ok) throw new Error("Failed to add user");
+
+      toast({
+        title: "user added successfully",
+      });
+      setIsUploading(false);
+    } catch (err) {
+      toast({
+        variant: "destructive",
+        title: "ensure all the credentials are right",
+      });
+      console.error(err);
+
+      setIsUploading(false);
+    }
   };
+
   const options = ["MANAGER", "ADMIN"];
   return (
     <section className="w-full flex h-screen bg-[url('/bg4.jpg')] bg-no-repeat bg-center bg-cover  justify-center">
@@ -73,6 +111,7 @@ export default function Home() {
           </select>
         </label>
         <button
+          disabled={isUploading}
           type="submit"
           className="text-lg w-9/12 max-w-xl font-medium mt-4  px-8 py-4 text-white border border-white bg-black rounded-lg hover:text-black hover:bg-white hover:border hover:border-gray-400 duration-300 delay-150 transition-all"
         >

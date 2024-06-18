@@ -39,6 +39,7 @@ export const navLinks = [
   { name: 'Products', href: '/#products' },
   { name: 'Careers', href: '/careers' },
   { name: 'Contact', href: '/contact' },
+  { name: 'Dashboard', href: '/admin/dashboard'}
 ]
 
 
@@ -46,5 +47,6 @@ export const mobileNavLinks: Link[] = [
   { name: 'Products', href: '/products' },
   { name: 'Careers', href: '/careers' },
   { name: 'Contact', href: '/contact' },
+  { name: 'Dashboard', href: '/admin/dashboard'}
 ]
 

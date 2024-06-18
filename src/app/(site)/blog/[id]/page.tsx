@@ -4,20 +4,29 @@ import Blog from "@/pages/Blog";
 import { notFound } from "next/navigation";
 
 const fetchData = async (id: string) => {
-  const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
-  const res = await fetch(`${backend}/blog/${id}`,{
-    next : {revalidate : 3600}
-  });
-  const data: { status: string; response: BlogType | string } = await res.json();
-  if(data.status === "failed"){
+  try {
+    const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
+    const res = await fetch(`${backend}/blog/${id}`, {
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) {
+      throw new Error("Failed to fetch");
+    }
+    const data: { status: string; response: BlogType | string } =
+      await res.json();
+    if (data.status === "failed") {
+      throw new Error("Failed to fetch");
+    }
+    return data.response as BlogType;
+  } catch (err) {
+    console.error(err);
     notFound();
   }
-  return data.response as BlogType;
 };
 
 export default async function Home({ params }: { params: { id: string } }) {
   const blog = await fetchData(params.id);
-  
+
   return (
     <>
       <div className="padding-x lg:pt-20 py-10 w-full ">

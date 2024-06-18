@@ -17,7 +17,7 @@ const Career: FC<CareerType> = ({ jobs, title, className }) => {
           return (
             <Link
               key={job.id}
-              href={`/career/${job.id}`}
+              href={`/careers/${job.id}`}
               className={cn(
                 " rounded-xl py-4 px-6 group  duration-200 delay-100 transition-colors ease-in-out flex flex-col justify-between",
                 className,
@@ -29,7 +29,7 @@ const Career: FC<CareerType> = ({ jobs, title, className }) => {
                 </h4>
                 <div className="flex gap-3 text-gray-600 monts pb-5 font-medium text-sm">
                   <p className="uppercase">{job.location}</p>
-                  {job.duration && (
+                  {job.worktype !== "job" && (
                     <p className="uppercase">
                       {job.duration} {job.durationType}
                     </p>
